@@ -12,23 +12,23 @@ SUPPORTED_BROWSERS = 'supported_browsers.txt'
 
 def menu( options ):
     for counter, option in enumerate( options ):
-            print " [" + str(counter) + "] %s" % option
+            print ( "[" + str(counter) + "] %s" % option )
 
-print "\n**Please close all browsers until the history is retrieved.**\n"
+print ("\n**Please close all browsers until the history is retrieved.**\n")
 
 with open( SUPPORTED_BROWSERS ) as f:
     browsers = f.readlines()
 
 menu( browsers )
 
-selection = input('Select Browser: ')
-search_string = raw_input('Search string: ')
-search_startmonth = input('Start month: ')
-search_endmonth = input('End month: ')
-search_startday = input('Start day: ')
-search_endday = input('End day: ')
-search_startyear = input('Start year: ')
-search_endyear = input('End year: ')
+selection = int(input('Select Browser: '))
+search_string = input('Search string: ')
+search_startmonth = int(input('Start month: '))
+search_endmonth = int(input('End month: '))
+search_startday = int(input('Start day: '))
+search_endday = int(input('End day: '))
+search_startyear = int(input('Start year: '))
+search_endyear = int(input('End year: '))
 
 # Retrieve links from history
 links = get_history_links( selection,
@@ -42,7 +42,7 @@ links = get_history_links( selection,
 # Search links for search string
 found = search_links( links, search_string )
 
-print "\nFound {} matches.".format( len( found ) ) 
+print ("\nFound {} matches.".format( len( found ) ) )
 
 # Record results
 f = open( 'output.txt', 'w' )
